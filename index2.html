@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    
+    
+</head>
+<body>
+    <h1>IMAGE BACKGROUND REMOVER</h1>
+    <h6>USING HTML,CSS,JAVASCRIPT AND remove.bg API</h6>
+    
+
+    
+        <div>
+        <form>
+        <div  >
+        <label  for="fileInput">Select a File: </label>
+        <br> 
+        <input  class="head" id="fileInput"  
+        type="file">
+        </div>
+        <div class="line">
+        <input class="up"
+        type="button"  onclick="submitHandler()"
+        value="Upload">
+        </form>
+
+        <button 
+         onclick="downloadFile()">
+         Download
+        </button>
+        </div>
+     
+         </div>
+        
+
+
+
+
+<script>
+    let imageURL;
+
+    function submitHandler(){
+        console.log("click");
+const fileInput = document.getElementById('fileInput');
+        console.log(fileInput.files);
+        const image = fileInput.files[0];
+
+        // Multipart file
+        const formData = new FormData();
+        formData.append('image_file', image);
+        formData.append('size', 'auto');
+
+        const apiKey = "3v5kQtTFvCN8mBQXntL7RLmQ";
+
+        fetch('https://api.remove.bg/v1.0/removebg',{
+            method:'POST',
+            headers: {
+            'X-Api-Key': apiKey
+         },
+         body: formData
+        })
+        .then(function(reponse){
+                return reponse.blob()
+        })
+        .then(function(blob){
+                console.log(blob);
+                const url = URL.createObjectURL(blob);
+                imageURL = url;
+                const img = document.createElement('img');
+                img.src = url;
+                document.body.appendChild(img);
+        })
+        .catch();
+    }
+
+   function downloadFile(){
+    var a = document.createElement('a');
+        a.href = imageURL;
+        a.download = 'bgremove.png';
+        document.body.appendChild(a);
+
+        a.click();
+
+        document.body.removeChild(a);
+   }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+body{
+            
+    background-color: rgb(226, 195, 195);
+}
+.up{
+    margin-bottom: 5px;
+    margin-top: 25px;
+    height: 50px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: rgb(208, 83, 83);
+    margin-left: 50px;        }
+button{
+    margin-top: 5px;
+    margin-left: 20px;
+    height: 50px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: rgb(208, 83, 83);
+}
+.line{
+    display: inline;
+}
+.head{
+    background-color: rgb(208, 83, 83);
+    margin-left: 50px;
+}
+h1{
+    padding-left: 50px;
+    background-color: rgb(208, 83, 83);
+}
+h6{
+    padding-left: 50px;
+
+}
+label{
+    padding-left: 50px;
+}
